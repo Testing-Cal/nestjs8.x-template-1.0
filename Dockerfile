@@ -12,15 +12,19 @@ ENV port 4005
 # install app dependencies
 COPY package.json ./
 
-RUN chmod -R 775 /app
-RUN chown -R node:node /app
-USER node
+#RUN chmod -R 775 /app
+#RUN chown -R node:node /app
+#USER node
 
 RUN npm install
 
 # add app
 COPY . ./
 
+RUN npm run build
 
+RUN chmod -R 775 /app
+RUN chown -R node:node /app
+USER node
 # start app
 CMD ["npm","start"]
