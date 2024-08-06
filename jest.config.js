@@ -1,17 +1,20 @@
 module.exports = {
-  roots: ["./src"],
+  roots: ["."],
   transform: {
     "^.+\\.ts$": "ts-jest", // Transform TypeScript files
   },
   testEnvironment: "node",
-  testMatch: ["**/?(*.)+(spec|test).[tj]s?(x)"], // Match test files
+  testMatch: [
+    "**/?(*.)+(spec|test).[tj]s?(x)",
+    "**/?(*.)+(e2e-spec|test).[tj]s?(x)",
+  ],
   collectCoverage: true,
   coverageDirectory: "coverage",
   coverageReporters: ["json", "lcov", "text-summary"],
   moduleNameMapper: {
-    "^@/(.*)$": "./src/$1",
+    "^@/(.*)$": "./$1",
   },
   clearMocks: true,
-  setupFilesAfterEnv: ["./src/setup-tests.ts"],
+  setupFilesAfterEnv: ["./setup-tests.ts"],
   testResultsProcessor: "jest-sonar-reporter", // Use SonarQube-compatible reporter
 };
