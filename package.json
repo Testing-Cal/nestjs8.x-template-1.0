@@ -31,6 +31,7 @@
     "sonarqube-scanner": "^4.0.1"
   },
   "devDependencies": {
+    "@casualbot/jest-sonar-reporter": "^2.3.1",
     "@nestjs/cli": "^8.2.8",
     "@nestjs/schematics": "^8.0.11",
     "@nestjs/testing": "8.4.7",
@@ -60,6 +61,7 @@
       "ts"
     ],
     "rootDir": "src",
+    "testResultsProcessor": "@casualbot/jest-sonar-reporter",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
@@ -69,5 +71,16 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "@casualbot/jest-sonar-reporter": {
+    "suiteName": "jest tests",
+    "outputDirectory": "",
+    "outputName": "sonar-report.xml",
+    "uniqueOutputName": "false",
+    "classNameTemplate": "{classname}-{title}",
+    "titleTemplate": "{classname}-{title}",
+    "ancestorSeparator": " › ",
+    "usePathForSuiteName": "true",
+    "relativePaths": "true"
   }
 }
