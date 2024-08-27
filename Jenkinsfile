@@ -324,7 +324,7 @@ pipeline {
                                 if (env.SONAR_CREDENTIAL_ID != null && env.SONAR_CREDENTIAL_ID != '') {
                                     withCredentials([usernamePassword(credentialsId: "$SONAR_CREDENTIAL_ID", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                                         sh '''
-                                         sed -i s+#SONAR_URL#+"$sonar_host}"+g ./sonar-project.properties
+                                         sed -i s+#SONAR_URL#+"$sonar_host"+g ./sonar-project.properties
                                          sed -i s+#SONAR_LOGIN#+$PASSWORD+g ./sonar-project.properties
                                          sed -i s+#RELEASE_NAME#+"$sonar_project_key"+g ./sonar-project.properties
                                          sed -i s+#SONAR_ORGANIZATION#+"$sonar_org"+g ./sonar-project.properties
